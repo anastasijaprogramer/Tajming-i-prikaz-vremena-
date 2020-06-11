@@ -1,2 +1,3 @@
 # Tajming-i-prikaz-vremena-
-Stoperica napisana 
+Stoperica sa mogucnosti zaustavljanja iste
+Prikaz trenutnog vremena kao i uklanjanje istog

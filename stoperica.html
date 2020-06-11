@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cas 22</title>
+</head>
+
+<body>
+    <button>Pokreni</button>
+    <button>Zaustavi</button>
+    <span id='brojanje'></span>
+    <hr>
+    <button>Prikazi vreme</button>
+    <button>Sakrij vreme</button>
+    <div id='sat'></div>
+    <script>
+
+
+
+        var prviSetInt = setTimeout(odlaganje, 3000);
+        var drugiSetInt = setInterval(pozdravDrugi, 2000);
+
+
+        clearInterval(prviSetInt); // kada zelite da testirate, stavite ovde komentare
+        clearInterval(drugiSetInt); // kada zelite da testirate, stavite ovde komentare
+
+        function pozdravPrvi() {
+            console.log('cao 1');
+        }
+
+        function pozdravDrugi() {
+            console.log('zdravo 2');
+        }
+
+        function odlaganje() {
+            setInterval(pozdravPrvi, 1000);
+        }
+
+        // 2 buttona
+        // 1. pokreni - koji broji sekunde pocevsi od 1 i ispisuje ih u span id-brojanje
+        // 2. zaustavi - koji zaustavlja taj ispis i ostavlja upisan poslednji broj i taj span
+        var brojac = 0;
+        var pokreni = document.getElementsByTagName('button')[0];
+        var zaustavi = document.getElementsByTagName('button')[1];
+        var pokreniInt;
+
+        pokreni.addEventListener('click', function () {
+            pokreniInt = setInterval(function () {
+                document.getElementById('brojanje').innerHTML = ++brojac;
+            }, 1000);
+        });
+
+        zaustavi.addEventListener('click', function () {
+            clearInterval(pokreniInt);
+
+        });
+
+
+        // klikom na dugme Prikazi vreme
+        // u divu id=sat ispisati trenutno vreme na stranici: hh:mm:ss 
+        // (postavljanje sata na stranicu)
+        // klikom na dugme Sakrij vreme, sat postaje nevidljiv na stranici
+        var prikaziVreme = document.getElementsByTagName('button')[2];
+        var sakrijVreme = document.getElementsByTagName('button')[3];
+        var vremeInt;
+
+        prikaziVreme.addEventListener('click', function () {
+            vremeInt = setInterval(function () {
+                document.getElementById('sat').innerHTML = (new Date()).toLocaleTimeString();
+            }, 1000);
+
+        });
+
+        sakrijVreme.addEventListener('click', function () {
+            clearInterval(vremeInt);
+            document.getElementById('sat').innerHTML = '';
+        });
+
+
+
+    </script>
+</body>
+
+</html>
